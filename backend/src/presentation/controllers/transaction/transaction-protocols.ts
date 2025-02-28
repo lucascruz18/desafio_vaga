@@ -1,0 +1,5 @@
+export * from '../../protocols'
+export * from '../../protocols/validation'
+export * from '../../../domain/models/transaction'
+export * from '../../../domain/usecases/add-transaction'
+export * from '../../../domain/usecases/process-transaction-file'
