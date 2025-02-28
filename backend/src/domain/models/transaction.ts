@@ -4,3 +4,8 @@ export interface TransactionModel {
   date: string
   value: number
 }
+
+export interface TransactionResult {
+  data: TransactionModel[]
+  total: number
+}

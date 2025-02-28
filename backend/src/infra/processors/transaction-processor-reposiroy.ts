@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import fs from 'fs'
 import readline from 'readline'
 import { CustomerRepository } from '../db/mongodb/customer/customer-repository'
