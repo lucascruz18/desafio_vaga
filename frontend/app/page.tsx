@@ -12,7 +12,7 @@ import {
 import { Pagination } from "@heroui/pagination";
 import { button as buttonStyles, input as inputStyles } from "@heroui/theme";
 import { addToast } from "@heroui/toast";
-import { IoFilterOutline } from "react-icons/io5";
+import { IoFilterOutline, IoCloudUploadSharp } from "react-icons/io5";
 
 import api from "@/services/http/api";
 
@@ -33,13 +33,16 @@ export default function Dashboard() {
     value: "",
   });
   const [showFilter, setShowFilter] = useState(false);
+  const [duration, setDuration] = useState(null);
 
   useEffect(() => {
     loadTransactions();
   }, []);
 
   useEffect(() => {
-    uploadFile();
+    if (file) {
+      uploadFile();
+    }
   }, [file]);
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,11 +72,14 @@ export default function Dashboard() {
     setError(null);
 
     try {
-      await api.post("/transaction/upload", formData, {
+      const { data } = await api.post("/transaction/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
+
+      if (data.duration) setDuration(data.duration);
+
       setUploading(false);
       addToast({
         title: "Arquivo processado com sucesso",
@@ -179,7 +185,10 @@ export default function Dashboard() {
               Enviando...
             </>
           ) : (
-            "Carregar Arquivo TXT"
+            <>
+              <IoCloudUploadSharp className="w-5 h-5 text-white" />
+              Carregar Arquivo TXT
+            </>
           )}
         </label>
         <input
@@ -190,6 +199,11 @@ export default function Dashboard() {
           onChange={handleFileUpload}
         />
         {file && <div className="mt-2 text-sm text-gray-600">{file.name}</div>}
+        {duration && (
+          <div className="mt-2 text-m text-gray-500">
+            Tempo de processamento: {duration}s
+          </div>
+        )}
       </div>
 
       <div className="flex justify-end mb-4">

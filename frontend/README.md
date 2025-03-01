@@ -1,53 +1,65 @@
-# Next.js & HeroUI Template
+# Front-End - Desafio Zeztra
 
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
+Este é o front-end do sistema de conciliação de pagamentos, desenvolvido com **Next.js** e **TypeScript**. Ele oferece uma interface web para upload de arquivos TXT contendo transações, listagem paginada e filtrada das transações, além de integração com a API back-end.
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
+## 📋 Funcionalidades
 
-## Technologies Used
+- Tela de dashboard com botão para upload de arquivo TXT.
+- Tabela com listagem de transações paginada e ordenada pela data da transação.
+- Filtros de busca para listagem, incluindo por nome e intervalo de datas da transação.
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI v2](https://heroui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+## 🚀 Tecnologias Utilizadas
 
-## How to Use
+- **Next.js**
+- **TypeScript**
+- **React**
+- **HeroUI**
 
-### Use the template with create-next-app
+---
 
-To create a new project based on this template using `create-next-app`, run the following command:
+## ⚙️ Configuração e Execução
 
-```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
-```
+### Pré-requisitos
 
-### Install dependencies
+Certifique-se de ter instalado em sua máquina:
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+- [Node.js](https://nodejs.org/) (versão 16 ou superior)
+- Gerenciador de pacotes **npm** ou **yarn**
 
-```bash
+### Instalação
+
+1. Clone este repositório:
+git clone <url-do-repositorio>
+cd <nome-do-repositorio>
+
+
+2. Instale as dependências:
 npm install
-```
 
-### Run the development server
 
-```bash
+3. Configure o endereço da API no arquivo `services/http/api.ts`. Altere a URL base para apontar para a instância da API back-end:
+const api = axios.create({
+baseURL: 'http://localhost:3001', // Altere aqui para o endereço da sua API
+});
+
+
+4. Inicie o servidor em modo desenvolvimento:
 npm run dev
-```
 
-### Setup pnpm (optional)
 
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+5. Para produção, execute os seguintes comandos:
+npm run build
+npm start
 
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+---
 
-## License
+## 🛠️ Scripts Disponíveis
 
-Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
+Os scripts disponíveis no `package.json` incluem:
+
+- `npm run dev`: Inicia o servidor em modo desenvolvimento com hot reload.
+- `npm run build`: Compila o código para produção.
+- `npm start`: Inicia o servidor em produção.
+
+---
