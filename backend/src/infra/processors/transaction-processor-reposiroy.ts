@@ -9,7 +9,7 @@ export class TransactionProcessorRepository {
   private readonly seenTransactions = new Set<string>();
   private readonly transactionBatch: any[] = [];
   private readonly customerBatch: any[] = [];
-  private readonly BATCH_SIZE = 500;
+  private readonly BATCH_SIZE = 1000;
 
   constructor (
     private readonly customerRepository: CustomerRepository,

@@ -1,8 +1,7 @@
-version: "3"
 services:
   mongo:
     container_name: mongo-container
-    image: mongo:4
+    image: mongo:latest
     restart: always
     volumes:
       - ./data:/data/db
@@ -15,7 +14,7 @@ services:
     image: zeztra-challenge-api
     command: npm start
     volumes:
-      - ./dist:/app/zeztra-challenge
+      - ./dist:/app/zeztra-challenge-api
     ports:
       - "5050:5050"
     links:

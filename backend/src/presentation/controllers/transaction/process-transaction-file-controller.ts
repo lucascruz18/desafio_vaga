@@ -17,9 +17,9 @@ export class ProcessTransactionFileController implements Controller {
         return badRequest(new Error('Arquivo não enviado'))
       }
 
-      const file = await this.processTransactionFile.processFile(httpRequest.file)
+      const processResult = await this.processTransactionFile.processFile(httpRequest.file)
 
-      return ok({ file })
+      return ok({ status: 'finished', duration: processResult.duration })
     } catch (error) {
       return serverError(error)
     }

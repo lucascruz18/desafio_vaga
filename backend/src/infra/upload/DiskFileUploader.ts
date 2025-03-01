@@ -2,12 +2,11 @@ import fs from 'fs'
 import path from 'path'
 import uploadConfig from '../../main/config/upload'
 import { FileUploader } from '../../data/protocols/upload/file-uploader'
+import { File } from 'multer'
 
 export class DiskFileUploader implements FileUploader {
-  async upload (file: Express.Multer.File): Promise<string> {
+  async upload (file: File): Promise<string> {
     try {
-      console.log('Recebido no upload:', file)
-
       const filename = file.filename
 
       const filePath = path.resolve(uploadConfig.tempFolder, filename)
@@ -21,7 +20,6 @@ export class DiskFileUploader implements FileUploader {
 
       return finalPath
     } catch (error) {
-      console.log('ERROR PRA FAZER UPLOAD: ', error)
       throw new Error('Erro ao fazer upload do arquivo')
     }
   }

@@ -55,7 +55,6 @@ export class TransactionRepository implements AddTransactionRepository, FindTran
       query.transactionId = filters.transactionId.trim()
     }
     if (filters.startDate && filters.endDate) {
-      console.log('FILTERS: ', filters)
       query.date = {
         $gte: filters.startDate,
         $lte: filters.endDate
@@ -65,14 +64,13 @@ export class TransactionRepository implements AddTransactionRepository, FindTran
       query.value = { $gte: filters.value }
     }
 
-    const total = await transactionCollection.countDocuments(query)
-
-    console.log('LOG: ', query)
+    const total = Number(await transactionCollection.countDocuments(query))
 
     const transactionsCursor = await transactionCollection
       .find(query)
       .skip((filters.page - 1) * Number(filters.limit))
       .limit(Number(filters.limit))
+      .sort({ date: -1 })
 
     const transactions = await transactionsCursor.toArray()
 

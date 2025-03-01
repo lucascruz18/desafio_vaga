@@ -5,7 +5,7 @@ import multer, { StorageEngine } from 'multer'
 import path from 'path'
 import { File } from '../../domain/models/file'
 
-const tempFolder = path.resolve(__dirname, '..', '..', '..', 'uploads')
+const tempFolder = path.resolve(__dirname, '..', '..', '..', 'tmp')
 
 interface IUploadConfig {
   driver: 's3' | 'disk'
