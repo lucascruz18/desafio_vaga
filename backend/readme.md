@@ -80,8 +80,6 @@ Os scripts disponíveis no `package.json` incluem:
 "cpfCnpj": "12345678901"
 }
 
-text
-
 ---
 
 ### **Upload de Arquivo TXT**
